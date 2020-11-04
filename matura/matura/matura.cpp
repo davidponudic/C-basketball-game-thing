@@ -15,7 +15,7 @@ int main()
 {
     srand(time(0));
     int randEkipa, randFGDvojk, randTrojke, menuChoice, randDvojke = 0, rezultat = 0, trojke = 0, FG = 0, visjiOvr = 0, manjsiOvr = 0, ovrEkipe1 = 0, ovrEkipe2 = 0;
-    int winBoostOvr = 0, ekipa1Tocke = 0, ekipa2Tocke = 0;
+    int winBoostOvr = 0, ekipa1Tocke = 0, ekipa2Tocke = 0, randRaz = 0;
     int Counter1 = 0;
     int Counter2 = 0;
     //int menuChoice;
@@ -43,13 +43,6 @@ int main()
         }
     }
 
-    /*for (int i = 0; i < 4; i++) {
-        if (igralecStruct[i].Ekipa == Ekipe[0])
-        {
-            igralciEkipe1[i] + igralecStruct[i].Ime;
-        }
-    }*/
-
     for (int i = 0; i < 2; i++) {
         cout << igralciEkipe1[i] << endl;
     }
@@ -68,21 +61,42 @@ int main()
     case 1:
         randTrojke = rand() % 3 + 9;
         randFGDvojk = rand() % 10 + 35;
-        winBoostOvr = rand() % 15;
+        winBoostOvr = rand() % 10;
+        randRaz = rand() % 11;
+        randEkipa = rand() % 2 + 1;
         randDvojke = randFGDvojk * 2;
         trojke = randTrojke * 3;
         rezultat = randDvojke + trojke;
+        ekipa1Tocke = rezultat/  2;
+
+        for (int i = ekipa1Tocke; i < rezultat; i++) {
+            ekipa2Tocke++;
+        }
+
         FG = randFGDvojk + randTrojke;
         if (ovrEkipe1 > ovrEkipe2) {
-            rezultat += winBoostOvr;
+            ekipa1Tocke += winBoostOvr;
         }
         else
-            cout << "rand FG Dvojk" << randFGDvojk << endl;
+            ekipa2Tocke += winBoostOvr;
+
+        if (randEkipa == 1) {
+            ekipa1Tocke += randRaz;
+        }
+        else
+            ekipa2Tocke += randRaz;
+
+        cout << "rand FG Dvojk" << randFGDvojk << endl;
         cout << "rand Trojke" << randTrojke << endl;
         cout << "trojke" << trojke << endl;
         cout << "rand Dvojke" << randDvojke << endl;
         cout << "FG" << FG << endl;
         cout << "rez" << rezultat << endl;
+        cout << "ekipa 1 tocke - " << ekipa1Tocke << endl;
+        cout << "ekipa 2 tocke - " << ekipa2Tocke << endl;
+        cout << ovrEkipe1;
+        cout << endl;
+        cout << ovrEkipe2;
         break;
     case 2:
         for (int i = 0; i < 4; i++) {
@@ -91,7 +105,7 @@ int main()
             cout << endl;
         }
         cout << ovrEkipe1;
-            cout << endl;
+           cout << endl;
         cout << ovrEkipe2;
         break;
     case 3:
