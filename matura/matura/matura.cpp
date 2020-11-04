@@ -14,16 +14,15 @@ struct Igralec {
 int main()
 {
     srand(time(0));
-    int randEkipa, randFGDvojk, randTrojke, menuChoice, randDvojke = 0, rezultat = 0, trojke = 0, FG = 0, visjiOvr = 0, manjsiOvr = 0, ovrEkipe1 = 0, ovrEkipe2 = 0;
-    int winBoostOvr = 0, ekipa1Tocke = 0, ekipa2Tocke = 0, randRaz = 0;
-    int Counter1 = 0;
-    int Counter2 = 0;
+    int randEkipa, randFGDvojk, randTrojke, menuChoice, randDvojke = 0, rezultat = 0, trojke = 0, FG = 0, visjiOvr = 0, manjsiOvr = 0,
+        ovrEkipe1 = 0,ovrEkipe2 = 0, winBoostOvr = 0, ekipa1Tocke = 0, ekipa2Tocke = 0, randRaz = 0, Counter1 = 0, Counter2 = 0,
+        scoreEkipa1 = 0, scoreEkipa2 = 0;
     //int menuChoice;
 
     string Ekipe[2] = { "Ringerz", "Ballerz" };
 
-    string igralciEkipe1[2];
-    string igralciEkipe2[2];
+    //string igralciEkipe1[2];
+    //string igralciEkipe2[2];
 
     for (int i = 0; i < 4; i++) {
         randEkipa = rand() % 2;
@@ -43,9 +42,9 @@ int main()
         }
     }
 
-    for (int i = 0; i < 2; i++) {
-        cout << igralciEkipe1[i] << endl;
-    }
+    //for (int i = 0; i < 2; i++) {
+    //    cout << igralciEkipe1[i] << endl;
+    //}
 
     cout << "---- BLACKTOP IGRA ----\n";
     cout << "1: Igraj igro\n";
@@ -60,7 +59,7 @@ int main()
     {
     case 1:
         randTrojke = rand() % 3 + 9;
-        randFGDvojk = rand() % 10 + 35;
+        randFGDvojk = rand() % 15 + 30;
         winBoostOvr = rand() % 10;
         randRaz = rand() % 11;
         randEkipa = rand() % 2 + 1;
@@ -82,10 +81,14 @@ int main()
 
         if (randEkipa == 1) {
             ekipa1Tocke += randRaz;
+            cout << "Ekipa 1 dobla tocke\n";
         }
-        else
+        else {
             ekipa2Tocke += randRaz;
+            cout << "Ekipa 2 dobla tocke\n";
+        }
 
+        // Debug (?) check thing 
         cout << "rand FG Dvojk" << randFGDvojk << endl;
         cout << "rand Trojke" << randTrojke << endl;
         cout << "trojke" << trojke << endl;
@@ -94,9 +97,15 @@ int main()
         cout << "rez" << rezultat << endl;
         cout << "ekipa 1 tocke - " << ekipa1Tocke << endl;
         cout << "ekipa 2 tocke - " << ekipa2Tocke << endl;
+        for (int i = 0; i < 4; i++) {
+            cout << igralecStruct[i].Ekipa << endl;
+            cout << igralecStruct[i].Ime << endl;
+            cout << endl;
+        }
         cout << ovrEkipe1;
         cout << endl;
         cout << ovrEkipe2;
+        //
         break;
     case 2:
         for (int i = 0; i < 4; i++) {
