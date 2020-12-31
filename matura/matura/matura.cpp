@@ -38,12 +38,13 @@ int main()
     srand(time(0));
 
     cout << "Hoces narediti custom igralca?\n";
-    cout << "1: DA\n";
-    cout << "2: NE\n";
-    cout << "3: EXIT\n";
+    cout << "1: Da\n";
+    cout << "2: Ne\n";
+    cout << "3: Exit\n";
     cout << "Vnesi izbiro: "; 
     cin >> customPlayerIzbira;
 
+    //Ce igralec hoce narediti custom igralca
     if (customPlayerIzbira == 1)
     {
         system("cls");
@@ -76,6 +77,8 @@ int main()
             }
         }
         system("cls");
+
+        //nadomestitev igralca z svojim custom igralcem
         cout << "Katerega igralca boste nadomestili: \n";
         cout << "1: LaBrun (OVR: " << igralecStruct[0].Overall << ")\n";
         cout << "2: Daront (OVR: " << igralecStruct[1].Overall << ")\n";
@@ -127,6 +130,7 @@ int main()
             }
         }
     }
+    //ce noce narediti custom igralca
     else if (customPlayerIzbira == 2)
     {
         //dodelitev ekip igralcem
@@ -172,7 +176,7 @@ int main()
         case 1: {
             system("cls");
 
-            //karkoli se mi je tu pipalo
+            //Tocke stvari
             randTrojke = rand() % 3 + 9;
             randFGDvojk = rand() % 15 + 30;
             winBoostOvr = rand() % 10;
@@ -254,21 +258,8 @@ int main()
                 team2Player2Trojke++;
             }
 
-            /*cout << "Team 1 player 1 dvojke: " << team1Player1Dvojke << endl;
-            cout << "Team 1 player 2 dvojke: " << team1Player2Dvojke << endl;
-            cout << "Team 1 player 1 trojke: " << team1Player1Trojke << endl;
-            cout << "Team 1 player 2 trojke: " << team1Player2Trojke << endl;
-
-            cout << "Team 2 player 1 dvojke: " << team2Player1Dvojke << endl;
-            cout << "Team 2 player 2 dvojke: " << team2Player2Dvojke << endl;
-            cout << "Team 2 player 1 trojke: " << team2Player1Trojke << endl;
-            cout << "Team 2 player 2 trojke: " << team2Player2Trojke << endl;*/
-
             int ja1 = ((team1Player1Dvojke + team1Player2Dvojke) * 2) + ((team1Player1Trojke + team1Player2Trojke) * 3), ja2 = ((team2Player1Dvojke + team2Player2Dvojke) * 2) + ((team2Player2Trojke + team2Player1Trojke) * 3);
             int ja1Counter = 0, ja2Counter = 0;
-
-            /*cout << ja1 << endl;
-            cout << ja2 << endl << endl;*/
 
             //rezultat = liho stevilo
             if (rezultat % 2 == 1) {
@@ -337,6 +328,7 @@ int main()
             string plswork = "";
             string plswork2 = "";
 
+            //bonus tocke random ekipi
             int randomTockeBonus1, randomTockeBonus2;
             randomTockeBonus1 = rand() % 2 + 1;
             randomTockeBonus2 = rand() % 2 + 1;
@@ -350,12 +342,11 @@ int main()
             {
                 ja2Counter++;
             }
-            /*cout << ja1Counter << endl;
-            cout << ja2Counter << endl;*/
 
             int team1Player1Tocke = ((team1Player1Dvojke*2)+(team1Player1Trojke*3)), team1Player2Tocke = ((team1Player2Dvojke*2)+(team1Player2Trojke*3));
             int team2Player1Tocke = ((team2Player1Dvojke*2)+(team2Player1Trojke*3)), team2Player2Tocke = ((team2Player2Dvojke*2)+(team2Player2Trojke*3));
 
+            //bonus tocke random ekipi in koliko tock je bilo danih
             if (randomTockeBonus1 == 1)
             {
                 team1Player1Tocke += ja1Counter;
@@ -409,6 +400,7 @@ int main()
 
             endScore(ekipa1Tocke, ekipa2Tocke, ekipa1Zmage, ekipa2Zmage, draws);
 
+            //Tocke igralcov ekipe 1
             cout << Ekipe[0] << " (OVR: " << ovrEkipe1 << ")" << ": " << endl;
             int a = 0;
             for (int i = 0; i < 4; i++) {
@@ -428,6 +420,8 @@ int main()
             }
             cout << plswork.substr(0, plswork.length() - 2);
             cout << endl << endl;
+
+            //Tocke igralcov ekipe 2
             cout << Ekipe[1] << " (OVR: " << ovrEkipe2 << ")" << ": " << endl;
             int b = 0;
             for (int i = 0; i < 4; i++) {
@@ -452,8 +446,16 @@ int main()
             cout << "2: Poglej generirane ekipe\n";
             cout << "3: Poglej statistike igralcev\n";
             cout << "4: EXIT\n";
-            cout << "Vnesi izbiro: ";
+            cout << "\n5: Resetiraj zmage/neenacbe\n";
+            cout << "\nVnesi izbiro: ";
             cin >> menuChoice;
+
+            if (menuChoice == 5)
+            {
+                ekipa1Zmage = 0;
+                ekipa2Zmage = 0;
+                draws = 0;
+            }
 
             break;
         }
@@ -520,6 +522,7 @@ int main()
         case 3:
             system("cls");
 
+            //Izpis statistik igralcov
             for (int i = 0; i < 4; i++) {
                 cout << "Ime: " << igralecStruct[i].Ime << "\nVisina: " << igralecStruct[i].Visina << " cm" << "\nOverall: " << igralecStruct[i].Overall << "\nEkipa: " << igralecStruct[i].Ekipa << endl << endl;
             }
@@ -541,8 +544,6 @@ int main()
             cout << "2: Poglej generirane ekipe\n";
             cout << "3: Poglej statistike igralcev\n";
             cout << "4: EXIT\n";
-            cout << "Vnesi stevilo 1, 2, 3 ali 4: ";
-            cout << endl;
             cout << "Vnesi izbiro: ";
             cin >> menuChoice;
             break;
